@@ -41,7 +41,7 @@ def training_net_with_test(net, turns, trd, vd):
 if __name__ == '__main__':
     net = build_init_net()
     #print(net.w[0])
-    tr_d, v_d, t_d = loader.load_data('d:\mnist.pkl.gz')
+    tr_d, v_d, t_d = loader.load_data_classify('./data/mnist.pkl.gz')
     #net.training(tr_d[0][0], tr_d[0][1])
 
     #for i in range(5000):

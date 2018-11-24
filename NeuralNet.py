@@ -83,13 +83,13 @@ class NeuralNet:
         self.b = np.load(path)
 
     def dump(self):
-        self.dump_w('D:\\tmp\\neuralnet.wd')
-        self.dump_b('D:\\tmp\\neuralnet.bd')
+        self.dump_w('./data/neuralnet.wd')
+        self.dump_b('./data/neuralnet.bd')
 
 
     def load_ori(self):
-        self.load_w('D:\\tmp\\neuralnet.wd')
-        self.load_b('D:\\tmp\\neuralnet.bd')
+        self.load_w('./data/neuralnet.wd')
+        self.load_b('./data/neuralnet.bd')
         self.inDim = len(self.w[0][0])
 
 
