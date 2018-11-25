@@ -50,12 +50,15 @@ def _pre_process(data):
         else:
             data[i] = 0.908
 
+    return fence
+
 def figure(path):
     img = _load_jpeg(path)
     img = _norm_28_28(img)
     
     data = _get_vec_data(img)
 
-    _pre_process(data)
+    # 图像的信息向量
+    fence = _pre_process(data)
 
-    return net.predict(data)
+    return (net.predict(data),data,fence)

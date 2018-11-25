@@ -5,6 +5,8 @@ import cPickle
 import gzip
 import numpy as np
 
+import os
+
 
 def load_data_raw(path):
 
@@ -57,17 +59,26 @@ def vectorized_result(j):
     return e
 
 # 将数据代表的数字图像可视化打印一下
-def show_data_as_pic(v):
+def show_data_as_pic(v,fence=0.3):
+    strGraph, num = get_data_graph(v)
+    print(strGraph + '\n')
+    print('active pixels : ' + str(num))
+
+
+def get_data_graph(v,fence=0.3):
     num = 0
+    strGraph = ''
     for line in range(28):
         lineStr = '';
         for y in range(28):
-            if v[28*line + y] > 0.1 :
-                lineStr = lineStr + '*'
+            if v[28*line + y] > fence :
+                lineStr = lineStr + '$$'
                 num = num + 1
             else:
-                lineStr = lineStr +'.'
-        print(lineStr)
-    print('active pixels : ' + str(num))
-        
-            
+                lineStr = lineStr +'..'
+        #print(lineStr)
+        lineStr = lineStr + os.linesep
+        strGraph = strGraph + lineStr
+    #print('active pixels : ' + str(num))
+
+    return (strGraph,num)
